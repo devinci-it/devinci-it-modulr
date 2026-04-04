@@ -1,0 +1,157 @@
+
+/* =========================
+   BASE BUTTON
+========================= */
+
+.modulr-button {
+    /* SCALE SYSTEM */
+    --btn-scale: 1;
+
+    --btn-base-font-size: 14px;
+    --btn-base-padding-y: 6px;
+    --btn-base-padding-x: 12px;
+    --btn-base-gap: 6px;
+    --btn-base-radius: 6px;
+
+    /* DERIVED */
+    --btn-font-size: calc(var(--btn-base-font-size) * var(--btn-scale));
+    --btn-padding-y: calc(var(--btn-base-padding-y) * var(--btn-scale));
+    --btn-padding-x: calc(var(--btn-base-padding-x) * var(--btn-scale));
+    --btn-gap: calc(var(--btn-base-gap) * var(--btn-scale));
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--btn-gap);
+
+    font-size: var(--btn-font-size);
+    padding: var(--btn-padding-y) var(--btn-padding-x);
+
+    border-radius: var(--btn-base-radius);
+    border: 1px solid transparent;
+
+    cursor: pointer;
+    text-decoration: none;
+    font-weight: 500;
+    line-height: 1;
+
+    transition: all 0.15s ease;
+}
+
+/* =========================
+   VARIANTS
+========================= */
+
+.modulr-button--primary {
+    background: #0070f3;
+    color: #fff;
+}
+
+.modulr-button--primary:hover {
+    background: #0059c9;
+}
+
+.modulr-button--secondary {
+    background: #e5e7eb;
+    color: #111827;
+}
+
+.modulr-button--secondary:hover {
+    background: #d1d5db;
+}
+
+.modulr-button--outline {
+    background: transparent;
+    border-color: #0070f3;
+    color: #0070f3;
+}
+
+.modulr-button--outline:hover {
+    background: rgba(0, 112, 243, 0.08);
+}
+
+/* =========================
+   SIZES (SCALE ONLY)
+========================= */
+
+.modulr-button--sm {
+    --btn-scale: 0.85;
+}
+
+.modulr-button--md {
+    --btn-scale: 1;
+}
+
+.modulr-button--lg {
+    --btn-scale: 1.2;
+}
+
+/* =========================
+   STATES
+========================= */
+
+.modulr-button--disabled,
+.modulr-button[disabled] {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+.modulr-button--loading {
+    pointer-events: none;
+    position: relative;
+}
+
+.modulr-button--rounded {
+    border-radius: 9999px;
+}
+
+/* =========================
+   ICONS
+========================= */
+
+.modulr-button__icon {
+    display: inline-flex;
+    align-items: center;
+}
+
+.modulr-button__icon--left {
+    margin-right: calc(4px * var(--btn-scale));
+}
+
+.modulr-button__icon--right {
+    margin-left: calc(4px * var(--btn-scale));
+}
+
+.modulr-button__icon svg {
+    width: calc(14px * var(--btn-scale));
+    height: calc(14px * var(--btn-scale));
+}
+
+
+.modulr-button--rounded {
+    border-radius: 9999px;
+}
+
+/* =========================
+   SPINNER
+========================= */
+
+.modulr-button__spinner {
+    width: calc(14px * var(--btn-scale));
+    height: calc(14px * var(--btn-scale));
+
+    border: 2px solid currentColor;
+    border-right-color: transparent;
+    border-radius: 50%;
+
+    animation: modulr-spin 0.6s linear infinite;
+}
+
+@keyframes modulr-spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
