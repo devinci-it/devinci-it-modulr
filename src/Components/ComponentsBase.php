@@ -6,6 +6,9 @@ use DevinciIT\Modulr\Constants;
 use DevinciIT\Modulr\Assets\AssetManager;
 abstract class ComponentsBase
 {
+    protected ?string $componentId = null;
+    protected array $componentClasses = [];
+
     protected ?string $cssFile = null;
     protected ?string $jsFile = null;
 
@@ -141,6 +144,37 @@ abstract class ComponentsBase
         return $this;
     }
 
+    /**
+     * Set a stable id for frontend hooks.
+     */
+    public function setId(string $id): static
+    {
+        $this->componentId = trim($id);
+        return $this;
+    }
+
+    /**
+     * Replace component hook classes.
+     */
+    public function setClass(string $class): static
+    {
+        $this->componentClasses = $this->normalizeClasses($class);
+        return $this;
+    }
+
+    /**
+     * Add one or more classes used by frontend JS/CSS hooks.
+     */
+    public function addClass(string $class): static
+    {
+        $this->componentClasses = array_values(array_unique(array_merge(
+            $this->componentClasses,
+            $this->normalizeClasses($class)
+        )));
+
+        return $this;
+    }
+
     public function setJsFile(string $path): static
     {
         $this->jsFile = $path;
@@ -183,5 +217,29 @@ abstract class ComponentsBase
         $this->allowInlineAssets = false;
         $this->allowExternalAssets = false;
         return $this;
+    }
+
+    /**
+     * Merge base hook id/classes into component attributes.
+     * Components can pass their root attributes array here before rendering.
+     */
+    protected function mergeBaseAttributes(array $attributes = []): array
+    {
+        if ($this->componentId !== null && $this->componentId !== '' && empty($attributes['id'])) {
+            $attributes['id'] = $this->componentId;
+        }
+
+        if (!empty($this->componentClasses)) {
+            $existing = isset($attributes['class']) ? $this->normalizeClasses((string) $attributes['class']) : [];
+            $attributes['class'] = implode(' ', array_values(array_unique(array_merge($existing, $this->componentClasses))));
+        }
+
+        return $attributes;
+    }
+
+    protected function normalizeClasses(string $class): array
+    {
+        $parts = preg_split('/\s+/', trim($class)) ?: [];
+        return array_values(array_filter($parts, static fn ($c) => $c !== ''));
     }
 }
