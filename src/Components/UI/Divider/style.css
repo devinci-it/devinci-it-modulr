@@ -1,0 +1,102 @@
+/* =========================
+   BASE DIVIDER (SCALE SYSTEM)
+========================= */
+
+.modulr-divider {
+  --div-scale: 1;
+  --div-base-thickness: 1px;
+  --div-base-spacing: 12px;
+
+  --div-thickness: calc(var(--div-base-thickness) * var(--div-scale));
+  --div-spacing: calc(var(--div-base-spacing) * var(--div-scale));
+
+  display: block;
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+/* =========================
+   ORIENTATION
+========================= */
+
+.modulr-divider--horizontal {
+  width: 100%;
+  height: var(--div-thickness);
+  margin: var(--div-spacing) 0;
+}
+
+.modulr-divider--vertical {
+  display: inline-block;
+  width: var(--div-thickness);
+  height: auto;
+  min-height: 1em;
+  margin: 0 var(--div-spacing);
+  vertical-align: middle;
+}
+
+/* =========================
+   SIZE VARIANTS
+========================= */
+
+.modulr-divider--sm {
+  --div-scale: 0.75;
+}
+
+.modulr-divider--md {
+  --div-scale: 1;
+}
+
+.modulr-divider--lg {
+  --div-scale: 1.5;
+}
+
+/* =========================
+   STYLE VARIANTS
+========================= */
+
+.modulr-divider--solid {
+  background: currentColor;
+}
+
+.modulr-divider--dashed {
+  background: linear-gradient(to right, currentColor 60%, transparent 60%, transparent 100%);
+  background-size: 8px 100%;
+  background-position: 0 0;
+  background-repeat: repeat-x;
+}
+
+.modulr-divider--vertical.modulr-divider--dashed {
+  background: linear-gradient(to bottom, currentColor 60%, transparent 60%, transparent 100%);
+  background-size: 100% 8px;
+  background-repeat: repeat-y;
+}
+
+.modulr-divider--dotted {
+  background: linear-gradient(to right, currentColor 20%, transparent 20%, transparent 100%);
+  background-size: 4px 100%;
+  background-position: 0 0;
+  background-repeat: repeat-x;
+}
+
+.modulr-divider--vertical.modulr-divider--dotted {
+  background: linear-gradient(to bottom, currentColor 20%, transparent 20%, transparent 100%);
+  background-size: 100% 4px;
+  background-repeat: repeat-y;
+}
+
+/* =========================
+   COLOR VARIANTS
+========================= */
+
+.modulr-divider--default {
+  color: #d0d7de;
+}
+
+.modulr-divider--muted {
+  color: #e5e7eb;
+}
+
+.modulr-divider--strong {
+  color: #6b7280;
+}
