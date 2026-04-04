@@ -4,17 +4,11 @@ namespace DevinciIT\Modulr\Assets;
 
 use DevinciIT\Modulr\Constants;
 
-/**
- * AssetManager
- *
- * Pure state container for registered assets.
- */
 class AssetManager
 {
     protected array $styles = [];
     protected array $scripts = [];
 
-    // Fast lookup to prevent duplicates (internal use only)
     protected array $styleLookup = [];
     protected array $scriptLookup = [];
 
@@ -23,23 +17,19 @@ class AssetManager
 
     protected string $baseDir;
 
-    public function __construct(string $baseDir = null)
+    public function __construct(?string $baseDir = null)
     {
-        $this->baseDir = rtrim(
-            $baseDir ?? Constants::ASSET_BASE,
-            '/'
-        );
+        $this->baseDir = rtrim($baseDir ?? Constants::ASSET_BASE, '/');
     }
 
-    /* -----------------------
+    /* ========================
      * Registration
-     * ----------------------- */
+     * ======================== */
 
     public function registerStyle(string $handle, string $path): void
     {
-        $path = $this->normalizePath($path);
+        $path = $this->resolvePath($path);
 
-        // Prevent duplicate paths (global dedupe)
         if (isset($this->styleLookup[$path])) {
             return;
         }
@@ -50,9 +40,8 @@ class AssetManager
 
     public function registerScript(string $handle, string $path): void
     {
-        $path = $this->normalizePath($path);
+        $path = $this->resolvePath($path);
 
-        // Prevent duplicate paths (global dedupe)
         if (isset($this->scriptLookup[$path])) {
             return;
         }
@@ -71,9 +60,9 @@ class AssetManager
         $this->inlineScripts[] = $js;
     }
 
-    /* -----------------------
+    /* ========================
      * Getters
-     * ----------------------- */
+     * ======================== */
 
     public function getStylePaths(): array
     {
@@ -95,12 +84,42 @@ class AssetManager
         return $this->inlineScripts;
     }
 
-    /* -----------------------
+    /* ========================
      * Helpers
-     * ----------------------- */
+     * ======================== */
 
-    protected function normalizePath(string $path): string
-    {
-        return rtrim($path, '/');
+  protected function resolvePath(string $path): string
+{
+    if (str_starts_with($path, 'http')) {
+        return $path;
     }
+
+    $base = rtrim($this->baseDir, '/');
+
+    // If already contains baseDir, don't prepend again
+    if (str_starts_with($path, $base)) {
+        return $path;
+    }
+
+    return $base . '/' . ltrim($path, '/');
+}
+
+    public function debug(): array {
+    return [
+        'styles' => $this->styles,
+        'scripts' => $this->scripts,
+        'inlineStyles' => $this->inlineStyles,
+        'inlineScripts' => $this->inlineScripts,
+    ];
+    }
+
+    public function reset(): void
+{
+    $this->styles = [];
+    $this->scripts = [];
+    $this->inlineStyles = [];
+    $this->inlineScripts = [];
+    $this->styleLookup = [];
+    $this->scriptLookup = [];
+}
 }

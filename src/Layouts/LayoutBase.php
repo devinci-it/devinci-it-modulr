@@ -9,22 +9,6 @@ class LayoutBase
 {
     public function render(string $content, AssetManager $assets, array $options = []): string
     {
-        [$styles, $scripts] = $this->renderAssets($assets);
-
-        [$foucStyle, $foucScript] = $this->renderFouc($options);
-
-        $head = $this->renderHead($options, $styles . $foucStyle);
-        $body = $this->renderBody($content, $options, $scripts . $foucScript);
-
-        return $this->buildHtml($head, $body);
-    }
-
-    /* ========================
-     * Asset Handling
-     * ======================== */
-
-    protected function renderAssets(AssetManager $assets): array
-    {
         $styles = AssetRenderer::renderStyles(
             $assets->getStylePaths(),
             $assets->getInlineStyles()
@@ -35,97 +19,80 @@ class LayoutBase
             $assets->getInlineScripts()
         );
 
-        return [$styles, $scripts];
+        $foucStyle = $this->foucStyle($options);
+        $foucScript = $this->foucScript($options);
+
+        $head = $this->renderHead($options, $foucStyle . $styles);
+        $body = $this->renderBody($content, $options, $scripts . $foucScript);
+
+        return $this->buildHtml($head, $body);
     }
 
     /* ========================
-     * FOUC Handling
+     * FOUC
      * ======================== */
 
-    protected function renderFouc(array $options): array
+    protected function foucStyle(array $options): string
     {
         if (!($options['fouc_protection'] ?? true)) {
-            return ['', ''];
+            return '';
         }
 
-        return [
-            $this->foucStyle(),
-            $this->foucScript()
-        ];
+        return '<style id="modulr-fouc-style">body{opacity:0;}</style>';
     }
 
-    protected function foucStyle(): string
+    protected function foucScript(array $options): string
     {
-        return '<style id="modulr-fouc-style">body{opacity:0!important;transition:none!important;}</style>';
-    }
+        if (!($options['fouc_protection'] ?? true)) {
+            return '';
+        }
 
-    protected function foucScript(): string
-    {
         return '<script>
-        console.log("[Modulr] FOUC protection active: hiding content until fully loaded.");
-        (function () {
-            function show() {
-                var s = document.getElementById("modulr-fouc-style");
-                if (s) s.remove();
-                document.body.style.opacity = "";
-            }
-
-            if (document.readyState === "complete") {
-                show();
-            } else if (window.addEventListener) {
-                window.addEventListener("load", show);
-            } else if (window.attachEvent) {
-                window.attachEvent("onload", show);
-            }
-        })();
+        window.addEventListener("load", function () {
+            const s = document.getElementById("modulr-fouc-style");
+            if (s) s.remove();
+            document.body.style.opacity = "";
+        });
         </script>';
     }
 
     /* ========================
-     * Structure Rendering
+     * Structure
      * ======================== */
 
     protected function renderHead(array $options, string $styles): string
     {
         $title = htmlspecialchars($options['title'] ?? 'Component', ENT_QUOTES);
-        $extraHead = $options['head'] ?? '';
+        $extra = $options['head'] ?? '';
 
         return <<<HTML
 <meta charset="UTF-8">
 <title>{$title}</title>
 
-
-{$extraHead}
+{$extra}
 {$styles}
 HTML;
     }
 
     protected function renderBody(string $content, array $options, string $scripts): string
     {
-        $bodyClass = htmlspecialchars($options['body_class'] ?? '', ENT_QUOTES);
-        $containerClass = $options['container_class'] ?? 'modulr-component-container';
-        $containerHtml = $this->wrapContainer($content, $containerClass);
+        $class = htmlspecialchars($options['body_class'] ?? '', ENT_QUOTES);
 
         return <<<HTML
-<body class="{$bodyClass}">
-{$containerHtml}
+<body class="{$class}">
+<!-- {$this->wrapContainer($content, $options)} -->
+ {$content}
 {$scripts}
 </body>
 HTML;
     }
 
-    protected function wrapContainer(string $content, string $class): string
+    protected function wrapContainer(string $content, array $options): string
     {
-        $container = new LayoutContainer();
+        $class = $options['container_class'] ?? 'modulr-container';
 
-        return $container->render($content, [
-            'class' => $class
-        ]);
+        return "<div class=\"{$class}\">{$content}</div>";
     }
-
-    /* ========================
-     * Final HTML
-     * ======================== */
 
     protected function buildHtml(string $head, string $body): string
     {
