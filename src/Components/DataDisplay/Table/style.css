@@ -1,0 +1,107 @@
+/* =========================================
+   Modulr Table Component
+   ========================================= */
+
+/* Base Table */
+.modulr-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: system-ui, -apple-system, sans-serif;
+    font-size: 14px;
+    color: #111;
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+/* Table Head */
+.modulr-table thead {
+    background: #f3f4f6;
+}
+
+.modulr-table thead th {
+    text-align: left;
+    font-weight: 600;
+    padding: 12px 16px;
+    border-bottom: 1px solid #e5e7eb;
+    white-space: nowrap;
+}
+
+/* Table Body */
+.modulr-table tbody tr {
+    transition: background 0.2s ease;
+}
+
+.modulr-table tbody tr:hover {
+    background: #f9fafb;
+}
+
+/* Cells */
+.modulr-table-cell {
+    padding: 12px 16px;
+    border-bottom: 1px solid #e5e7eb;
+    vertical-align: middle;
+}
+
+/* Last row cleanup */
+.modulr-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* =========================================
+   Variants
+   ========================================= */
+
+/* Striped */
+.modulr-table--striped tbody tr:nth-child(odd) {
+    background: #fafafa;
+}
+
+/* Compact */
+.modulr-table--compact .modulr-table-cell,
+.modulr-table--compact thead th {
+    padding: 8px 10px;
+}
+
+/* Bordered (strong grid) */
+.modulr-table--bordered .modulr-table-cell,
+.modulr-table--bordered thead th {
+    border: 1px solid #e5e7eb;
+}
+
+/* Hover (emphasized hover) */
+.modulr-table--hover tbody tr:hover {
+    background: #eef2ff;
+}
+
+/* Rounded variant (if not default) */
+.modulr-table--rounded {
+    border-radius: 8px;
+}
+
+/* =========================================
+   Alignment Helpers
+   ========================================= */
+
+.modulr-table-cell--center {
+    text-align: center;
+}
+
+.modulr-table-cell--right {
+    text-align: right;
+}
+
+/* =========================================
+   Responsive (horizontal scroll)
+   ========================================= */
+
+.modulr-table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+}
+
+/* Optional: wrap table for mobile */
+.modulr-table-wrapper .modulr-table {
+    min-width: 600px;
+}
