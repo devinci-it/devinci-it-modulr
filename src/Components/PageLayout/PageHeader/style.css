@@ -1,0 +1,98 @@
+.modulr-page-header {
+    --ph-scale: 1;
+    --ph-base-gap: 12px;
+    --ph-base-main-gap: 16px;
+    --ph-base-left-gap: 12px;
+    --ph-base-right-gap: 8px;
+    --ph-base-context-size: 14px;
+    --ph-base-title-size: 20px;
+    --ph-base-desc-size: 14px;
+    --ph-base-nav-padding-top: 8px;
+
+    --ph-gap: calc(var(--ph-base-gap) * var(--ph-scale));
+    --ph-main-gap: calc(var(--ph-base-main-gap) * var(--ph-scale));
+    --ph-left-gap: calc(var(--ph-base-left-gap) * var(--ph-scale));
+    --ph-right-gap: calc(var(--ph-base-right-gap) * var(--ph-scale));
+    --ph-context-size: calc(var(--ph-base-context-size) * var(--ph-scale));
+    --ph-title-size: calc(var(--ph-base-title-size) * var(--ph-scale));
+    --ph-desc-size: calc(var(--ph-base-desc-size) * var(--ph-scale));
+    --ph-nav-padding-top: calc(var(--ph-base-nav-padding-top) * var(--ph-scale));
+
+    display: flex;
+    flex-direction: column;
+    gap: var(--ph-gap);
+}
+
+.modulr-page-header--sm {
+    --ph-scale: 0.9;
+}
+
+.modulr-page-header--md {
+    --ph-scale: 1;
+}
+
+.modulr-page-header--lg {
+    --ph-scale: 1.15;
+}
+
+/* =========================
+   CONTEXT BAR
+========================= */
+
+.modulr-page-header__context {
+    display: none;
+    justify-content: space-between;
+    align-items: center;
+    font-size: var(--ph-context-size);
+}
+
+/* Mobile only */
+@media (max-width: 768px) {
+    .modulr-page-header__context {
+        display: flex;
+    }
+}
+
+/* =========================
+   MAIN
+========================= */
+
+.modulr-page-header__main {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--ph-main-gap);
+}
+
+/* LEFT */
+.modulr-page-header__left {
+    display: flex;
+    align-items: center;
+    gap: var(--ph-left-gap);
+}
+
+/* TITLE */
+.modulr-page-header__title {
+    margin: 0;
+    font-size: var(--ph-title-size);
+    font-weight: 600;
+}
+
+.modulr-page-header__description {
+    margin: 2px 0 0;
+    font-size: var(--ph-desc-size);
+    color: #6b7280;
+}
+
+/* RIGHT */
+.modulr-page-header__right {
+    display: flex;
+    align-items: center;
+    gap: var(--ph-right-gap);
+}
+
+/* NAV */
+.modulr-page-header__nav {
+    border-top: 1px solid #e5e7eb;
+    padding-top: var(--ph-nav-padding-top);
+}
