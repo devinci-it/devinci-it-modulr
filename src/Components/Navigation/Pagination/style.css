@@ -1,0 +1,256 @@
+/* =========================
+   Base Tokens
+========================= */
+
+.modulr-pagination {
+    --pagination-text: #475569;
+    --pagination-hover-text: #111827;
+    --pagination-active-text: #1e59da;
+    --pagination-muted-text: #94a3b8;
+
+    --pagination-focus-ring: #3b82f6;
+
+    --pagination-size: 36px;
+    --pagination-padding: 0px;
+    --pagination-font-size: 14px;
+
+    display: block;
+    width: 100%;
+    color: var(--pagination-text);
+}
+
+/* =========================
+   Size Variants
+========================= */
+
+.modulr-pagination--sm {
+    --pagination-size: 30px;
+    --pagination-font-size: 13px;
+}
+
+.modulr-pagination--md {
+    --pagination-size: 36px;
+    --pagination-font-size: 14px;
+}
+
+.modulr-pagination--lg {
+    --pagination-size: 44px;
+    --pagination-font-size: 15px;
+}
+
+/* =========================
+   Layout
+========================= */
+
+.modulr-pagination__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
+}
+
+.modulr-pagination__item {
+    margin: 0;
+}
+
+/* =========================
+   Link (Modern Text Style)
+========================= */
+
+.modulr-pagination__link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: var(--pagination-size);
+    height: var(--pagination-size);
+
+    padding: 0;
+    border: none;
+    background: transparent;
+
+    color: var(--pagination-text);
+    font-size: var(--pagination-font-size);
+    line-height: 1;
+
+    text-decoration: none;
+
+    transition:
+        transform 0.15s ease,
+        color 0.15s ease,
+        opacity 0.15s ease;
+}
+
+/* =========================
+   Hover / Focus
+========================= */
+
+.modulr-pagination__link:hover,
+.modulr-pagination__link:focus-visible {
+    color: var(--pagination-hover-text);
+    transform: scale(1.08);
+    outline: none;
+}
+
+/* Optional focus ring */
+.modulr-pagination__link:focus-visible {
+    outline: 2px solid var(--pagination-focus-ring);
+    outline-offset: 2px;
+    border-radius: 8px;
+}
+
+/* =========================
+   Active State
+========================= */
+
+.modulr-pagination__link.is-current {
+    color: var(--pagination-active-text);
+    font-weight: 600;
+    transform: scale(1.15);
+}
+
+/* =========================
+   Disabled
+========================= */
+
+.modulr-pagination__link.is-disabled {
+    opacity: 0.35;
+    pointer-events: none;
+}
+
+/* =========================
+   Ellipsis
+========================= */
+
+.modulr-pagination__item.is-ellipsis {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 24px;
+
+    color: var(--pagination-muted-text);
+    font-size: 13px;
+
+    user-select: none;
+    opacity: 0.7;
+}
+
+/* =========================
+   First / Last / Prev / Next
+========================= */
+
+.modulr-pagination__link.is-first,
+.modulr-pagination__link.is-last,
+.modulr-pagination__link.is-previous,
+.modulr-pagination__link.is-next {
+    font-size: 13px;
+    font-weight: 500;
+}
+
+/* =========================
+   Ghost Variant (No visual container)
+========================= */
+
+.modulr-pagination--ghost .modulr-pagination__link {
+    color: var(--pagination-text);
+}
+
+.modulr-pagination--ghost .modulr-pagination__link:hover,
+.modulr-pagination--ghost .modulr-pagination__link:focus-visible {
+    color: var(--pagination-hover-text);
+    transform: scale(1.08);
+}
+
+.modulr-pagination--ghost .modulr-pagination__link.is-current {
+    color: var(--pagination-active-text);
+}
+
+/* =========================
+   Dark Variant (Optional)
+========================= */
+
+.modulr-pagination--dark {
+    --pagination-text: #cbd5f5;
+    --pagination-hover-text: #ffffff;
+    --pagination-active-text: #ffffff;
+    --pagination-muted-text: #64748b;
+    --pagination-focus-ring: #60a5fa;
+}
+
+/* =========================
+   Primary Accent Variant
+========================= */
+
+.modulr-pagination--primary {
+    --pagination-text: #2563eb;
+    --pagination-hover-text: #1d4ed8;
+    --pagination-active-text: #1e40af;
+}
+
+/* =========================
+   Micro Interaction Polish
+========================= */
+
+.modulr-pagination__link {
+    will-change: transform;
+}
+
+.modulr-pagination__link:active {
+    transform: scale(0.95);
+}
+
+/* =========================
+   Optional Shell (your preview UI)
+========================= */
+
+.pagination-preview-shell {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 16px;
+}
+
+.pagination-preview-loading {
+    display: none;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 180px;
+    border-radius: 10px;
+
+    background: linear-gradient(180deg, #f8fafc 0%, #eef2f7 100%);
+
+    color: #334155;
+    font-size: 14px;
+    gap: 10px;
+}
+
+.pagination-preview-shell.is-loading .pagination-preview-loading {
+    display: flex;
+}
+
+.pagination-preview-shell.is-loading .pagination-preview-data {
+    display: none;
+}
+
+.pagination-preview-spinner {
+    width: 18px;
+    height: 18px;
+
+    border-radius: 999px;
+    border: 2px solid #cbd5e1;
+    border-top-color: #0f172a;
+
+    animation: pagination-spin 0.75s linear infinite;
+}
+
+@keyframes pagination-spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
