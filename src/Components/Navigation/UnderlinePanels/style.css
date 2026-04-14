@@ -1,0 +1,76 @@
+.modulr-underline-panels {
+    --underline-panels-border: #d0d7de;
+    --underline-panels-text: #57606a;
+    --underline-panels-active: #24292f;
+    --underline-panels-accent: #fd8c73;
+    --underline-panels-hover: rgba(9, 105, 218, 0.08);
+    --underline-panels-panel-bg: #ffffff;
+
+    width: 100%;
+    color: var(--underline-panels-active);
+}
+
+.modulr-underline-panels__tablist {
+    display: flex;
+    align-items: stretch;
+    gap: 4px;
+    border-bottom: 1px solid var(--underline-panels-border);
+    overflow-x: auto;
+    padding: 0;
+}
+
+.modulr-underline-panels__tab {
+    position: relative;
+    appearance: none;
+    border: 0;
+    border-radius: 8px 8px 0 0;
+    background: transparent;
+    color: var(--underline-panels-text);
+    cursor: pointer;
+    font: inherit;
+    min-height: 42px;
+    padding: 0 14px;
+    white-space: nowrap;
+    transition: color 0.16s ease, background-color 0.16s ease;
+}
+
+.modulr-underline-panels__tab:hover,
+.modulr-underline-panels__tab:focus-visible {
+    color: var(--underline-panels-active);
+    background: var(--underline-panels-hover);
+    outline: none;
+}
+
+.modulr-underline-panels__tab::after {
+    content: '';
+    position: absolute;
+    left: 10px;
+    right: 10px;
+    bottom: -1px;
+    height: 3px;
+    border-radius: 999px;
+    background: transparent;
+    transition: background-color 0.16s ease;
+}
+
+.modulr-underline-panels__tab.is-active {
+    color: var(--underline-panels-active);
+    font-weight: 600;
+}
+
+.modulr-underline-panels__tab.is-active::after {
+    background: var(--underline-panels-accent);
+}
+
+.modulr-underline-panels__tab:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+}
+
+.modulr-underline-panels__panel {
+    margin-top: 14px;
+    border: 1px solid var(--underline-panels-border);
+    border-radius: 10px;
+    background: var(--underline-panels-panel-bg);
+    padding: 16px;
+}
