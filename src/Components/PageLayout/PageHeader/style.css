@@ -96,3 +96,11 @@
     border-top: 1px solid #e5e7eb;
     padding-top: var(--ph-nav-padding-top);
 }
+.modulr-page-header--default {
+	border-bottom: 1px solid #e5e7eb;
+}
+
+.modulr-page-header--muted {
+	border-bottom: 1px solid #e5e7eb;
+	opacity: 0.8;
+}

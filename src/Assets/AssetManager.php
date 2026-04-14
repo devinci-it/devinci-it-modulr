@@ -15,6 +15,9 @@ class AssetManager
     protected array $inlineStyles = [];
     protected array $inlineScripts = [];
 
+    protected array $inlineStyleLookup = [];
+    protected array $inlineScriptLookup = [];
+
     protected string $baseDir;
 
     public function __construct(?string $baseDir = null)
@@ -55,8 +58,28 @@ class AssetManager
         $this->inlineStyles[] = $css;
     }
 
+    public function addInlineStyleOnce(string $key, string $css): void
+    {
+        if (isset($this->inlineStyleLookup[$key])) {
+            return;
+        }
+
+        $this->inlineStyleLookup[$key] = true;
+        $this->inlineStyles[] = $css;
+    }
+
     public function addInlineScript(string $js): void
     {
+        $this->inlineScripts[] = $js;
+    }
+
+    public function addInlineScriptOnce(string $key, string $js): void
+    {
+        if (isset($this->inlineScriptLookup[$key])) {
+            return;
+        }
+
+        $this->inlineScriptLookup[$key] = true;
         $this->inlineScripts[] = $js;
     }
 
@@ -121,5 +144,7 @@ class AssetManager
     $this->inlineScripts = [];
     $this->styleLookup = [];
     $this->scriptLookup = [];
+    $this->inlineStyleLookup = [];
+    $this->inlineScriptLookup = [];
 }
 }

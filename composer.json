@@ -12,27 +12,16 @@
     "require": {
         "php": "^7.4|^8.0"
     },
-    "require-dev": {
-        "phpunit/phpunit": "^9.0|^10.0",
-        "phpstan/phpstan": "^1.0"
-    },
     "autoload": {
         "psr-4": {
-            "DevinciIT\\Modulr\\": "src/"
+            "DevinciIT\\Modulr\\": "src/",
+            "Modulr\\": "src/"
         },
         "files": [
             "src/Helpers/component.php",
-            "src/Helpers/classnames.php"
+            "src/Helpers/classnames.php",
+            "bootstrap/helpers.php"
         ]
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "DevinciIT\\Modulr\\Tests\\": "tests/"
-        }
-    },
-    "scripts": {
-        "test": "phpunit",
-        "phpstan": "phpstan analyse src"
     },
     "keywords": [
         "ui",

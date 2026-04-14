@@ -1,0 +1,149 @@
+body {
+    display: flex;
+    min-height: 100vh;
+    margin: 0;
+    font-family: system-ui, -apple-system, sans-serif;
+    background: #f9fafb;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 260px;
+    background: #ffffff;
+    border-right: 1px solid #e5e7eb;
+    padding: 16px 0;
+}
+
+.sidebar ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* Links */
+.sidebar a {
+    display: block;
+    padding: 8px 16px;
+    margin: 2px 8px;
+    border-radius: 6px;
+    color: #374151;
+    text-decoration: none;
+    font-size: 14px;
+    transition: all 0.15s ease;
+}
+
+.sidebar a:hover {
+    background: #f3f4f6;
+    color: #111827;
+}
+
+.sidebar a.active {
+    background: #eef2ff;
+    color: #1d4ed8;
+    font-weight: 600;
+}
+
+/* Groups */
+.group {
+    margin-top: 4px;
+}
+
+/* Toggle */
+.group-toggle {
+    width: 100%;
+    text-align: left;
+    padding: 10px 16px;
+    background: transparent;
+    border: none;
+    font-size: 13px;
+    font-weight: 600;
+    color: #6b7280;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.group-toggle:hover {
+    color: #111827;
+}
+
+/* Arrow */
+.group-toggle::after {
+    content: "▸";
+    font-size: 10px;
+    transition: transform 0.2s ease;
+}
+
+.group.open > .group-toggle::after {
+    transform: rotate(90deg);
+}
+
+/* Nested */
+.group-items {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.25s ease;
+    padding-left: 12px;
+    border-left: 1px solid #e5e7eb;
+    margin-left: 18px;
+}
+
+.group.open > .group-items {
+    max-height: 500px;
+}
+
+/* Nested links */
+.group-items a {
+    padding-left: 12px;
+    font-size: 13.5px;
+}
+
+/* Main */
+.main-content {
+    flex: 1;
+    padding: 32px;
+    background: #f9fafb;
+}
+
+/* =========================
+   SHOW CODE BUTTON
+========================= */
+
+.modulr-show-code-btn {
+    appearance: none;
+    border: 1px solid #d1d5db;
+    background: #ffffff;
+    color: #111827;
+    font-size: 13px;
+    padding: 6px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    font-weight: 500;
+    line-height: 1;
+}
+
+/* Hover state */
+.modulr-show-code-btn:hover {
+    background: #f9fafb;
+    border-color: #9ca3af;
+}
+
+/* Active / pressed */
+.modulr-show-code-btn:active {
+    background: #f3f4f6;
+    transform: translateY(1px);
+}
+
+/* Focus (accessibility) */
+.modulr-show-code-btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.4);
+}
+
+/* Disabled state */
+.modulr-show-code-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}

@@ -1,24 +1,61 @@
-#DevinciIT\Modulr
+# Modulr Component Conventions
 
-Perfect—this is now solid. Let’s **finalize it cleanly** and resolve duplication into one **cohesive, production-ready blueprint**, plus clearly list **ALL components you’ll include (v1 library scope)**.
+## Directory Structure
+
+- **Source:**
+  - `src/Components/DataDisplay/Table/`
+  - `src/Components/UI/Button/`
+- **Public (Published):**
+  - `public/vendor/modulr/components/DataDisplay/Table/style.css`
+  - `public/vendor/modulr/components/DataDisplay/Table/script.js`
+
+## CSS/JS Naming
+
+- **CSS Classes:**
+  - Use flat, namespaced classes: `.mdlr-table`, `.mdlr-button`, `.mdlr-navbar`, etc.
+- **JS Hooks:**
+  - Use `data-component="{component}"` on the root element, e.g., `data-component="table"`.
+
+## Example Table Markup
+
+```html
+<table class="mdlr-table" id="mdlr-table" data-component="table">
+  <thead>...</thead>
+  <tbody>
+    <tr class="mdlr-table-row">
+      <td class="mdlr-table-cell">...</td>
+    </tr>
+  </tbody>
+</table>
+```
+
+## Asset Publishing
+
+- Use the build-assets.php script to mirror the source structure in `public/vendor/modulr/components/`.
+- AssetManager can be configured to point to this directory for dynamic asset loading.
+
+## Overriding Assets
+
+- Developers can override CSS/JS by replacing files in the published directory or by registering their own with AssetManager.
+Here’s a **cleaned, fixed, and properly structured version** of your `plan.md`. I removed duplication, improved consistency, fixed grammar, and unified terminology while keeping your vision intact.
 
 ---
 
-# 🧱 FINAL CONSOLIDATED PLAN — `devinci-it\modulr`
+# 🧱 DevinciIT\Modulr — FINAL PLAN
 
-Inspired by GitHub Primer but optimized for:
+A **PHP component system** inspired by modern UI frameworks, designed for:
 
-✅ PHP MVC
-✅ OOP components
-✅ Scoped CSS + JS per component
-✅ Reusability across projects
+* PHP MVC applications
+* OOP component architecture
+* Scoped CSS & JS per component
+* Maximum reusability across projects
 
 ---
 
-# 📂 1. FINAL CLEAN STRUCTURE (MERGED + OPTIMIZED)
+# 📂 1. FINAL PROJECT STRUCTURE
 
-```id="final-structure"
-php-ui-kit/
+```text id="final-structure"
+modulr/
 │
 ├── src/
 │   ├── Core/
@@ -45,9 +82,9 @@ php-ui-kit/
 │   │
 │   ├── Contracts/
 │   │   ├── Renderable.php
-│
+│   │
 │   └── Config/
-│       ├── theme.php
+│       └── theme.php
 │
 ├── resources/
 │   ├── css/
@@ -56,8 +93,8 @@ php-ui-kit/
 │   │   ├── utilities.css
 │
 ├── public/
-│   ├── components/   ← compiled or direct component assets
-│   ├── build/        ← optional bundled assets
+│   ├── components/
+│   ├── build/
 │
 ├── docs/
 │   ├── components.md
@@ -68,11 +105,11 @@ php-ui-kit/
 
 ---
 
-# 🧠 2. FINAL CORE RULES (LOCK THESE IN)
+# 🧠 2. CORE PRINCIPLES
 
-### 🔑 Rule 1: Component = Folder
+### 🔑 Rule 1 — Component = Folder
 
-```id="rule1"
+```text id="rule1"
 Button/
   ├── Button.php
   ├── view.php
@@ -83,45 +120,36 @@ Button/
 
 ---
 
-### 🔑 Rule 2: Auto Asset Loading
+### 🔑 Rule 2 — Auto Asset Loading
 
-* If component is used → CSS + JS auto-included
-* No manual `<link>` per component
+* CSS & JS load automatically when a component is used
+* No manual `<link>` or `<script>` required
 
 ---
 
-### 🔑 Rule 3: Global CSS = minimal
+### 🔑 Rule 3 — Minimal Global CSS
 
 Only:
 
-* tokens (colors, spacing)
-* utilities (flex, grid)
+* Design tokens (colors, spacing, etc.)
+* Utility classes
 
-Everything else → component-level
+Everything else is component-scoped.
 
 ---
 
-### 🔑 Rule 4: Naming Convention
+### 🔑 Rule 4 — Naming Convention
 
-```id="naming"
-.ui-{component}
-.ui-{component}--variant
-```
-
-Example:
-
-```
-.ui-button
-.ui-button--primary
+```text id="naming"
+.mdlr-{category}-{component}
+.mdlr-{category}-{component}--{variant}
 ```
 
 ---
 
-# ⚙️ 3. FINAL CORE ENGINE (REFINED)
+# ⚙️ 3. CORE ENGINE
 
----
-
-## 🔹 Component (Final)
+## 🔹 Base Component
 
 ```php
 abstract class Component {
@@ -139,7 +167,7 @@ abstract class Component {
 
 ---
 
-## 🔹 AssetManager (Improved)
+## 🔹 Asset Manager
 
 ```php
 class AssetManager {
@@ -165,112 +193,84 @@ class AssetManager {
 
 ---
 
-## 🔹 component() helper
+## 🔹 Component Helper
 
 ```php
 function component($name, $props = []) {
-    $class = "\\UI\\Components\\" . ucfirst($name) . "\\" . ucfirst($name);
+    $class = "\\DevinciIT\\Modulr\\Components\\" . ucfirst($name) . "\\" . ucfirst($name);
     return (new $class($props))->render();
 }
 ```
 
 ---
 
-# 🧩 4. COMPLETE COMPONENT LIST (V1 LIBRARY)
+# 🧩 4. COMPONENT LIBRARY (V1)
 
-This is your **official reusable library scope** 👇
+## Layout
 
----
+* Container
+* Grid
+* Flex
+* Stack
+* Section
+* Wrapper
+* SidebarLayout
 
-## 📐 Layout Components
+## UI
 
-```id="layout"
-Container
-Grid
-Flex
-Stack
-Section
-Wrapper
-SidebarLayout
-```
+* Button
+* Icon
+* Badge
+* Avatar
+* Divider
+* Spinner
+* Tooltip
 
----
+## Forms
 
-## 🎛 UI Components
+* Form
+* Input
+* Textarea
+* Select
+* Checkbox
+* Radio
+* Switch
+* Label
+* FormGroup
 
-```id="ui"
-Button
-Icon
-Badge
-Avatar
-Divider
-Spinner
-Tooltip
-```
+## Feedback
 
----
+* Alert
+* Toast
+* Modal
+* ProgressBar
+* Skeleton
+* EmptyState
 
-## 📝 Form Components
+## Data Display
 
-```id="forms"
-Form
-Input
-Textarea
-Select
-Checkbox
-Radio
-Switch
-Label
-FormGroup
-```
+* Card
+* Table
+* List
+* ListItem
+* Pagination
+* Stat
+* Timeline
 
----
+## Navigation
 
-## ⚠️ Feedback Components
-
-```id="feedback"
-Alert
-Toast
-Modal
-ProgressBar
-Skeleton
-EmptyState
-```
-
----
-
-## 📊 Data Display
-
-```id="data"
-Card
-Table
-List
-ListItem
-Pagination
-Stat
-Timeline
-```
+* Navbar
+* Sidebar
+* Menu
+* Dropdown
+* Tabs
+* Breadcrumb
 
 ---
 
-## 🧭 Navigation
+# 🎨 5. DESIGN SYSTEM
 
-```id="nav"
-Navbar
-Sidebar
-Menu
-Dropdown
-Tabs
-Breadcrumb
-```
-
----
-
-# 🎨 5. DESIGN SYSTEM (FINAL)
-
----
-
-## 🔹 Tokens (global)
+## Tokens
 
 ```css
 :root {
@@ -283,7 +283,7 @@ Breadcrumb
 
 ---
 
-## 🔹 Utilities (global)
+## Utilities
 
 ```css
 .flex { display: flex; }
@@ -293,90 +293,126 @@ Breadcrumb
 
 ---
 
-## 🔹 Component CSS (local only)
+## Component CSS
 
 ```css
-.ui-card { }
-.ui-modal { }
-.ui-navbar { }
+.mdlr-ui-button { }
+.mdlr-data-card { }
+.mdlr-navigation-navbar { }
 ```
 
 ---
 
-# 🔁 6. FINAL FLOW
+# 🔁 6. RENDER FLOW
 
-```id="flow"
+```text id="flow"
 Controller
-   ↓
+  ↓
 View
-   ↓
-component('button')
-   ↓
+  ↓
+component()
+  ↓
 Component class
-   ↓
+  ↓
 AssetManager registers assets
-   ↓
+  ↓
 HTML rendered
-   ↓
-Layout injects CSS + JS
+  ↓
+Assets injected (CSS + JS)
 ```
 
 ---
 
-# 🚀 7. OPTIONAL BUT RECOMMENDED (V1.5)
+# 🚀 7. BRAND SYSTEM — MODULR
 
-Add after base works:
+## Prefix
 
-### 🔹 Asset Build System
-
-* Combine CSS → `app.css`
-* Combine JS → `app.js`
-
----
-
-### 🔹 Component CLI
-
-```
-php make:component Button
+```text id="brand"
+.mdlr
 ```
 
 ---
 
-### 🔹 Theming System
+## Class Naming
 
-```
-light / dark
-custom themes
+```text id="format"
+.mdlr-{category}-{component}
+.mdlr-{category}-{component}--{variant}
 ```
 
 ---
 
-### 🔹 Slots (advanced)
+## Examples
+
+```text id="examples"
+.mdlr-ui-button
+.mdlr-ui-button--primary
+.mdlr-feedback-modal
+.mdlr-data-display-table
+```
+
+---
+
+# 🧠 8. DESIGN RULES
+
+* Every component is **isolated**
+* No global CSS conflicts
+* Predictable naming across all components
+* Fully override-friendly
+* Scales from small → large applications
+
+---
+
+# 🧩 9. REQUIRED COMPONENT STRUCTURE
+
+```text id="structure"
+src/Components/DataDisplay/Table/
+  Table.php
+  view.php
+  style.css
+  script.js
+```
+
+---
+
+# 🔌 10. VIEW STANDARD
 
 ```php
-Card::make()->slot('footer', '...');
+<div 
+  class="mdlr-data-display-table <?= $_class ?? '' ?>"
+  data-component="table"
+  data-variant="<?= $_variant ?? '' ?>">
+
+  <!-- content -->
+
+</div>
 ```
 
 ---
 
-# 🧩 FINAL RESULT (WHAT YOU BUILT)
+# 🧬 11. NAMESPACING
 
-You now have:
-
-✅ A reusable PHP UI framework
-✅ Component-based architecture
-✅ Auto-managed assets
-✅ Clean MVC integration
-✅ Scalable design system
-
-👉 Basically your own **mini frontend framework inside PHP**
+```php
+namespace DevinciIT\Modulr\Components\DataDisplay\Table;
+```
 
 ---
 
-👉 Build these 5 first:
+# 🧠 12. WHY MODULR WORKS
 
-* Button
-* Card
-* Input
-* Modal
-* Navbar
+* Predictable architecture
+* Clean separation of concerns
+* Scalable component system
+* Auto asset management
+* Strong branding consistency
+
+---
+
+# 🔥 FINAL SUMMARY
+
+**Modulr =**
+
+```text id="summary"
+PHP Component System + Scoped Assets + Strict Naming + MVC Integration
+```
+

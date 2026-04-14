@@ -34,7 +34,6 @@ $hasRight = !empty($trailingVisual) || !empty($leadingAction) || !empty($trailin
 
             <div class="modulr-page-header__content">
                 <h1 class="modulr-page-header__title"><?= htmlspecialchars($title) ?></h1>
-
                 <?php if ($hasDescription): ?>
                     <p class="modulr-page-header__description"><?= htmlspecialchars($description) ?></p>
                 <?php endif; ?>
