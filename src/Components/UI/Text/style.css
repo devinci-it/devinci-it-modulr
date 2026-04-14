@@ -1,0 +1,157 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&display=swap');
+
+.modulr-text {
+    --text-scale: 1;
+
+    /* Font Family */
+    --base-font-family: ui-system,'Outfit', sans-serif;
+
+    /* Font Weights */
+    --base-text-weight-light: 300;
+    --base-text-weight-normal: 400;
+    --base-text-weight-medium: 500;
+    --base-text-weight-semibold: 600;
+
+    /* Display */
+    --text-display-size: 2.5rem;
+    --text-display-line-height: 1.4;
+    --text-display-weight: var(--base-text-weight-medium);
+
+    /* Body Large */
+    --text-body-large-size: 1rem;
+    --text-body-large-line-height: 1.5;
+    --text-body-large-weight: var(--base-text-weight-normal);
+
+    /* Code Block */
+    --text-code-block-size: 0.8125rem;
+    --text-code-block-line-height: 1.5385;
+    --text-code-block-weight: var(--base-text-weight-normal);
+
+    /* Title Large */
+    --text-title-large-size: 2.5rem;
+    --text-title-large-line-height: 1.4;
+    --text-title-large-weight: var(--base-text-weight-medium);
+
+    /* Title Medium */
+    --text-title-medium-size: 2rem;
+    --text-title-medium-line-height: 1.5;
+    --text-title-medium-weight: var(--base-text-weight-medium);
+
+    /* Title Small */
+    --text-title-small-size: 1.25rem;
+    --text-title-small-line-height: 1.4;
+    --text-title-small-weight: var(--base-text-weight-semibold);
+
+    /* Subtitle */
+    --text-subtitle-size: 1rem;
+    --text-subtitle-line-height: 1.5;
+    --text-subtitle-weight: var(--base-text-weight-normal);
+
+    /* Body Medium */
+    --text-body-medium-size: 1rem;
+    --text-body-medium-line-height: 1.5;
+    --text-body-medium-weight: var(--base-text-weight-normal);
+
+    /* Body Small */
+    --text-body-small-size: 0.8125rem;
+    --text-body-small-line-height: 1.5385;
+    --text-body-small-weight: var(--base-text-weight-normal);
+
+    /* Caption */
+    --text-caption-size: 0.75rem;
+    --text-caption-line-height: 1.3334;
+    --text-caption-weight: var(--base-text-weight-normal);
+
+    /* Code Inline */
+    --text-code-inline-size: 1em;
+    --text-code-inline-line-height: inherit;
+    --text-code-inline-weight: var(--base-text-weight-normal);
+
+    margin: 0;
+    font-family: var(--base-font-family);
+    color: inherit;
+}
+
+.modulr-text--display {
+    font-size: calc(var(--text-display-size) * var(--text-scale));
+    line-height: var(--text-display-line-height);
+    font-weight: var(--text-display-weight);
+}
+
+.modulr-text--body-large {
+    font-size: calc(var(--text-body-large-size) * var(--text-scale));
+    line-height: var(--text-body-large-line-height);
+    font-weight: var(--text-body-large-weight);
+}
+
+.modulr-text--code-block {
+    font-size: calc(var(--text-code-block-size) * var(--text-scale));
+    line-height: var(--text-code-block-line-height);
+    font-weight: var(--text-code-block-weight);
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+}
+
+.modulr-text--title-large {
+    font-size: calc(var(--text-title-large-size) * var(--text-scale));
+    line-height: var(--text-title-large-line-height);
+    font-weight: var(--text-title-large-weight);
+}
+
+.modulr-text--title-medium {
+    font-size: calc(var(--text-title-medium-size) * var(--text-scale));
+    line-height: var(--text-title-medium-line-height);
+    font-weight: var(--text-title-medium-weight);
+}
+
+.modulr-text--title-small {
+    font-size: calc(var(--text-title-small-size) * var(--text-scale));
+    line-height: var(--text-title-small-line-height);
+    font-weight: var(--text-title-small-weight);
+}
+
+.modulr-text--subtitle {
+    font-size: calc(var(--text-subtitle-size) * var(--text-scale));
+    line-height: var(--text-subtitle-line-height);
+    font-weight: var(--text-subtitle-weight);
+}
+
+.modulr-text--body-medium {
+    font-size: calc(var(--text-body-medium-size) * var(--text-scale));
+    line-height: var(--text-body-medium-line-height);
+    font-weight: var(--text-body-medium-weight);
+}
+
+.modulr-text--body-small {
+    font-size: calc(var(--text-body-small-size) * var(--text-scale));
+    line-height: var(--text-body-small-line-height);
+    font-weight: var(--text-body-small-weight);
+}
+
+.modulr-text--caption {
+    font-size: calc(var(--text-caption-size) * var(--text-scale));
+    line-height: var(--text-caption-line-height);
+    font-weight: var(--text-caption-weight);
+}
+
+.modulr-text--code-inline {
+    font-size: calc(var(--text-code-inline-size) * var(--text-scale));
+    line-height: var(--text-code-inline-line-height);
+    font-weight: var(--text-code-inline-weight);
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+}
+
+.modulr-text--weight-light {
+    font-weight: var(--base-text-weight-light);
+}
+
+.modulr-text--weight-normal {
+    font-weight: var(--base-text-weight-normal);
+}
+
+.modulr-text--weight-medium {
+    font-weight: var(--base-text-weight-medium);
+}
+
+.modulr-text--weight-semibold {
+    font-weight: var(--base-text-weight-semibold);
+}
