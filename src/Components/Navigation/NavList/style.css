@@ -1,0 +1,113 @@
+.modulr-nav-list {
+	--nav-list-bg: #ffffff;
+	--nav-list-border: #e5e7eb;
+	--nav-list-text: #0f172a;
+	--nav-list-muted: #64748b;
+	--nav-list-hover: #f8fafc;
+	--nav-list-current-bg: #eef2ff;
+	--nav-list-current-text: #1d4ed8;
+	--nav-list-current-border: #1d4ed8;
+
+	display: grid;
+	gap: 14px;
+	background: var(--nav-list-bg);
+	color: var(--nav-list-text);
+	width: 100%;
+	min-width: 220px;
+}
+
+.modulr-nav-list--inset {
+	padding: 10px;
+	border: 1px solid var(--nav-list-border);
+	border-radius: 12px;
+}
+
+.modulr-nav-list__section {
+	display: grid;
+	gap: 6px;
+}
+
+.modulr-nav-list__section-label {
+	margin: 0;
+	padding: 0 10px;
+	font-size: 11px;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+	font-weight: 700;
+	color: var(--nav-list-muted);
+}
+
+.modulr-nav-list__list {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: grid;
+	gap: 3px;
+}
+
+.modulr-nav-list__list-item {
+	margin: 0;
+	padding: 0;
+}
+
+.modulr-nav-list__item {
+	display: grid;
+	grid-template-columns: auto 1fr auto;
+	align-items: center;
+	gap: 8px;
+	padding: 10px;
+	border-radius: 10px;
+	color: inherit;
+	text-decoration: none;
+	border-left: 2px solid transparent;
+	transition: background 0.14s ease, color 0.14s ease, border-color 0.14s ease;
+}
+
+.modulr-nav-list__item:hover,
+.modulr-nav-list__item:focus-visible {
+	background: var(--nav-list-hover);
+	outline: none;
+}
+
+.modulr-nav-list__item.is-current {
+	background: var(--nav-list-current-bg);
+	color: var(--nav-list-current-text);
+	font-weight: 700;
+	border-left-color: var(--nav-list-current-border);
+}
+
+.modulr-nav-list__item.is-disabled {
+	opacity: 0.55;
+	cursor: not-allowed;
+}
+
+.modulr-nav-list__icon {
+	width: 16px;
+	height: 16px;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 14px;
+}
+
+.modulr-nav-list__label {
+	min-width: 0;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.modulr-nav-list__badge {
+	font-size: 11px;
+	line-height: 1;
+	padding: 4px 7px;
+	border-radius: 999px;
+	background: #e2e8f0;
+	color: #334155;
+}
+
+.modulr-nav-list--dense .modulr-nav-list__item {
+	padding: 8px 10px;
+	gap: 7px;
+	border-radius: 8px;
+}
