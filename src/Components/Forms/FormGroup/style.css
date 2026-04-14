@@ -1,0 +1,49 @@
+.modulr-form-group {
+	--form-group-scale: 1;
+	--form-group-base-gap: 0.4rem;
+	--form-group-base-font-size: 1rem;
+	--form-group-base-help-size: 0.8125rem;
+
+	display: grid;
+	gap: calc(var(--form-group-base-gap) * var(--form-group-scale));
+}
+
+.modulr-form-group--sm {
+	--form-group-scale: 0.85;
+}
+
+.modulr-form-group--md {
+	--form-group-scale: 1;
+}
+
+.modulr-form-group--lg {
+	--form-group-scale: 1.15;
+}
+
+.modulr-form-group__label {
+	font-weight: 600;
+	font-size: calc(var(--form-group-base-font-size) * var(--form-group-scale));
+	color: #0f172a;
+}
+
+.modulr-form-group__required {
+	color: #dc2626;
+}
+
+.modulr-form-group__help,
+.modulr-form-group__error {
+	margin: 0;
+	font-size: calc(var(--form-group-base-help-size) * var(--form-group-scale));
+}
+
+.modulr-form-group__help {
+	color: #64748b;
+}
+
+.modulr-form-group__error {
+	color: #dc2626;
+}
+
+.modulr-form-group--invalid .modulr-form-group__control :is(input, textarea, select) {
+	border-color: #dc2626;
+}

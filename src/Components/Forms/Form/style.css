@@ -1,0 +1,33 @@
+.modulr-form {
+	--form-scale: 1;
+	--form-base-gap: 1rem;
+	--form-base-submit-gap: 0.75rem;
+	--form-base-grid-min: 220px;
+
+	display: block;
+	width: 100%;
+}
+
+.modulr-form__body {
+	display: grid;
+	gap: calc(var(--form-base-gap) * var(--form-scale));
+}
+
+.modulr-form__body--inline {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: flex-end;
+}
+
+.modulr-form__body--grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(calc(var(--form-base-grid-min) * var(--form-scale)), 1fr));
+	gap: calc(var(--form-base-gap) * var(--form-scale));
+}
+
+.modulr-form__submit-area {
+	margin-top: calc(1rem * var(--form-scale));
+	display: flex;
+	justify-content: flex-end;
+	gap: calc(var(--form-base-submit-gap) * var(--form-scale));
+}

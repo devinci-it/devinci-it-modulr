@@ -1,0 +1,36 @@
+.modulr-label {
+	--label-scale: 1;
+	--label-base-gap: 0.35rem;
+	--label-base-font-size: 1rem;
+	--label-base-assistive-size: 0.8125rem;
+
+	display: inline-flex;
+	align-items: center;
+	gap: calc(var(--label-base-gap) * var(--label-scale));
+	font: inherit;
+	font-size: calc(var(--label-base-font-size) * var(--label-scale));
+	font-weight: 600;
+	color: #0f172a;
+}
+
+.modulr-label--sm {
+	--label-scale: 0.85;
+}
+
+.modulr-label--md {
+	--label-scale: 1;
+}
+
+.modulr-label--lg {
+	--label-scale: 1.15;
+}
+
+.modulr-label__required {
+	color: #dc2626;
+}
+
+.modulr-label__assistive {
+	font-size: calc(var(--label-base-assistive-size) * var(--label-scale));
+	font-weight: 400;
+	color: #64748b;
+}

@@ -1,0 +1,41 @@
+.modulr-radio {
+	--radio-scale: 1;
+	--radio-base-gap: 0.5rem;
+	--radio-base-font-size: 1rem;
+	--radio-base-control-size: 1rem;
+
+	display: inline-flex;
+	align-items: center;
+	gap: calc(var(--radio-base-gap) * var(--radio-scale));
+	font: inherit;
+	font-size: calc(var(--radio-base-font-size) * var(--radio-scale));
+	color: #0f172a;
+	cursor: pointer;
+}
+
+.modulr-radio--sm {
+	--radio-scale: 0.85;
+}
+
+.modulr-radio--md {
+	--radio-scale: 1;
+}
+
+.modulr-radio--lg {
+	--radio-scale: 1.15;
+}
+
+.modulr-radio__input {
+	width: calc(var(--radio-base-control-size) * var(--radio-scale));
+	height: calc(var(--radio-base-control-size) * var(--radio-scale));
+}
+
+.modulr-radio__label {
+	font-weight: 500;
+}
+
+.modulr-radio__help {
+	margin: calc(0.35rem * var(--radio-scale)) 0 0 calc(1.5rem * var(--radio-scale));
+	font-size: calc(0.8125rem * var(--radio-scale));
+	color: #64748b;
+}

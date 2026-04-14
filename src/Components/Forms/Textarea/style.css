@@ -1,0 +1,69 @@
+.modulr-textarea {
+	--textarea-scale: 1;
+	--textarea-base-min-height: 120px;
+	--textarea-base-padding-y: 0.75rem;
+	--textarea-base-padding-x: 0.85rem;
+	--textarea-base-font-size: 1rem;
+	--textarea-base-radius: 0.5rem;
+
+	display: block;
+	width: 100%;
+	min-height: calc(var(--textarea-base-min-height) * var(--textarea-scale));
+	padding: calc(var(--textarea-base-padding-y) * var(--textarea-scale)) calc(var(--textarea-base-padding-x) * var(--textarea-scale));
+	border: 1px solid #cbd5e1;
+	border-radius: var(--textarea-base-radius);
+	font: inherit;
+	font-size: calc(var(--textarea-base-font-size) * var(--textarea-scale));
+	background: #ffffff;
+	color: #0f172a;
+	box-sizing: border-box;
+	resize: vertical;
+}
+
+.modulr-textarea--sm {
+	--textarea-scale: 0.85;
+}
+
+.modulr-textarea--md {
+	--textarea-scale: 1;
+}
+
+.modulr-textarea--lg {
+	--textarea-scale: 1.15;
+}
+
+.modulr-textarea--none {
+	resize: none;
+}
+
+.modulr-textarea--horizontal {
+	resize: horizontal;
+}
+
+.modulr-textarea--both {
+	resize: both;
+}
+
+.modulr-textarea:focus {
+	outline: none;
+	border-color: #0366d6;
+	box-shadow: 0 0 0 calc(3px * var(--textarea-scale)) rgba(3, 102, 214, 0.2);
+}
+
+.modulr-textarea--invalid {
+	border-color: #dc2626;
+}
+
+.modulr-textarea__help,
+.modulr-textarea__error {
+	margin: calc(0.35rem * var(--textarea-scale)) 0 0;
+	font-size: calc(0.8125rem * var(--textarea-scale));
+}
+
+.modulr-textarea__help {
+	color: #64748b;
+}
+
+.modulr-textarea__error {
+	color: #dc2626;
+}

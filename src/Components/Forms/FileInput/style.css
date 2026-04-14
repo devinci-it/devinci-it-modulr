@@ -1,0 +1,300 @@
+.modulr-file-input {
+	--file-input-scale: 1;
+	--file-input-font-family: system-ui, sans-serif;
+	--file-input-font-weight: 500;
+	--file-input-base-font-size: 13px;
+	--file-input-base-gap: 0.5rem;
+	--file-input-base-padding-y: 8px;
+	--file-input-base-padding-x: 12px;
+	--file-input-base-radius: 4px;
+	--file-input-base-control-min-height: 36px;
+	--file-input-base-preview-size: 44px;
+	--file-input-base-dropzone-min-height: 160px;
+	--file-input-base-button-padding-y: 6px;
+	--file-input-base-button-padding-x: 14px;
+	--file-input-base-help-size: 12px;
+	--file-input-transition: 0.3s;
+	--file-input-background: #f6f8fa;
+	--file-input-text: #23282e;
+	--file-input-border: rgb(208, 215, 222);
+	--file-input-hover: #e5e8eb;
+	--file-input-focus: #0366d6;
+	--file-input-focus-shadow: 0 0 0 calc(3px * var(--file-input-scale)) rgba(3, 102, 214, 0.3);
+	--file-input-error: #ff5252;
+
+	display: grid;
+	gap: calc(var(--file-input-base-gap) * var(--file-input-scale));
+	max-width: 34rem;
+	font-family: var(--file-input-font-family);
+	font-weight: var(--file-input-font-weight);
+	color: var(--file-input-text);
+}
+
+.modulr-file-input__label {
+	font-family: var(--file-input-font-family);
+	font-weight: var(--file-input-font-weight);
+	font-size: calc(var(--file-input-base-font-size) * 1.05 * var(--file-input-scale));
+	color: var(--file-input-text);
+}
+
+.modulr-file-input__required {
+	color: var(--file-input-error);
+	margin-left: 0.2rem;
+}
+
+.modulr-file-input__list {
+	display: grid;
+	gap: calc(var(--file-input-base-gap) * var(--file-input-scale));
+}
+
+.modulr-file-input__row {
+	display: flex;
+	gap: calc(var(--file-input-base-gap) * var(--file-input-scale));
+	align-items: center;
+	flex-wrap: wrap;
+}
+
+.modulr-file-input__control {
+	flex: 1;
+	width: 100%;
+	min-height: calc(var(--file-input-base-control-min-height) * var(--file-input-scale));
+	padding: calc(var(--file-input-base-padding-y) * var(--file-input-scale)) calc(var(--file-input-base-padding-x) * var(--file-input-scale));
+	font-family: var(--file-input-font-family);
+	font-weight: var(--file-input-font-weight);
+	font-size: calc(var(--file-input-base-font-size) * var(--file-input-scale));
+	background-color: var(--file-input-background);
+	color: var(--file-input-text);
+	border: 1px solid var(--file-input-border);
+	border-radius: var(--file-input-base-radius);
+	box-sizing: border-box;
+	transition:
+		background-color var(--file-input-transition) ease,
+		border-color var(--file-input-transition) ease,
+		box-shadow var(--file-input-transition) ease;
+}
+
+.modulr-file-input__control:hover {
+	background-color: var(--file-input-hover);
+}
+
+.modulr-file-input__control:focus {
+	outline: none;
+	border-color: var(--file-input-focus);
+	box-shadow: var(--file-input-focus-shadow);
+}
+
+.modulr-file-input__add,
+.modulr-file-input__remove {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding: calc(var(--file-input-base-button-padding-y) * var(--file-input-scale)) calc(var(--file-input-base-button-padding-x) * var(--file-input-scale));
+	font-family: var(--file-input-font-family);
+	font-weight: 600;
+	font-size: calc(var(--file-input-base-font-size) * var(--file-input-scale));
+	line-height: 1.5;
+	color: #24292e;
+	background-color: var(--file-input-background);
+	border: 1px solid var(--file-input-border);
+	border-radius: calc(35px * var(--file-input-scale));
+	cursor: pointer;
+	transition: background-color var(--file-input-transition) ease;
+	text-decoration: none;
+	appearance: none;
+}
+
+.modulr-file-input__add:hover,
+.modulr-file-input__remove:hover {
+	background-color: var(--file-input-hover);
+}
+
+.modulr-file-input__add:focus,
+.modulr-file-input__remove:focus {
+	outline: none;
+	border-color: var(--file-input-focus);
+	box-shadow: var(--file-input-focus-shadow);
+}
+
+.modulr-file-input__remove {
+	border-color: #f1b6c3;
+	background-color: #fff1f4;
+}
+
+.modulr-file-input__help {
+	font-size: calc(var(--file-input-base-help-size) * var(--file-input-scale));
+	color: #475569;
+	margin: 0;
+}
+
+.modulr-file-input__preview {
+	display: inline-flex;
+	align-items: center;
+	gap: calc(var(--file-input-base-gap) * var(--file-input-scale));
+	min-height: calc(var(--file-input-base-control-min-height) * var(--file-input-scale));
+	padding: calc(6px * var(--file-input-scale)) calc(10px * var(--file-input-scale));
+	border: 1px dashed var(--file-input-border);
+	border-radius: var(--file-input-base-radius);
+	background: #ffffff;
+	max-width: 100%;
+}
+
+.modulr-file-input__preview-image {
+	width: calc(var(--file-input-base-preview-size) * var(--file-input-scale));
+	height: calc(var(--file-input-base-preview-size) * var(--file-input-scale));
+	border-radius: calc(6px * var(--file-input-scale));
+	object-fit: cover;
+	border: 1px solid #dbe3eb;
+	background: #f8fafc;
+	flex: 0 0 auto;
+}
+
+.modulr-file-input__preview-text {
+	font-size: calc(var(--file-input-base-help-size) * var(--file-input-scale));
+	line-height: 1.3;
+	color: #334155;
+	word-break: break-word;
+}
+
+.modulr-file-input__add:disabled,
+.modulr-file-input__remove:disabled,
+.modulr-file-input__control:disabled {
+	opacity: 0.6;
+	cursor: not-allowed;
+}
+
+.modulr-file-input--image .modulr-file-input__control,
+.modulr-file-input--media .modulr-file-input__control {
+	border-color: #0366d6;
+}
+
+.modulr-file-input--document .modulr-file-input__control,
+.modulr-file-input--pdf .modulr-file-input__control {
+	border-color: #ffca28;
+}
+
+.modulr-file-input--archive .modulr-file-input__control {
+	border-color: #6f42c1;
+}
+
+/* Optional wrapper for file input + icon inside the same row. */
+.modulr-file-input__input-wrapper {
+	position: relative;
+	min-width: 100%;
+}
+
+.modulr-file-input__icon {
+	position: absolute;
+	right: 12px;
+	top: 50%;
+	transform: translateY(-50%);
+	width: 16px;
+	height: 16px;
+	fill: #555;
+	pointer-events: none;
+}
+
+/* Optional drag/drop zone style for image/file upload UIs. */
+.modulr-file-input__dropzone {
+	width: 100%;
+	min-height: calc(var(--file-input-base-dropzone-min-height) * var(--file-input-scale));
+	padding: calc(20px * var(--file-input-scale));
+	border-radius: calc(10px * var(--file-input-scale));
+	border: 2px dashed var(--file-input-border);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	color: var(--file-input-text);
+	background-color: #ffffff;
+	flex-direction: column;
+	gap: 0.5rem;
+	cursor: pointer;
+	transition: background-color var(--file-input-transition) ease, border-color var(--file-input-transition) ease;
+}
+
+.modulr-file-input__dropzone.is-dragover {
+	border-style: solid;
+	background-color: #eef6ff;
+}
+
+.modulr-file-input__dropzone:focus-visible {
+	outline: none;
+	border-color: var(--file-input-focus);
+	box-shadow: var(--file-input-focus-shadow);
+}
+
+.modulr-file-input__dropzone-text {
+	font-size: calc(var(--file-input-base-font-size) * var(--file-input-scale));
+	color: #334155;
+}
+
+.modulr-file-input__selected {
+	width: 100%;
+	display: grid;
+	gap: calc(0.4rem * var(--file-input-scale));
+	padding: calc(0.5rem * var(--file-input-scale));
+	border: 1px solid #e2e8f0;
+	border-radius: var(--file-input-base-radius);
+	background: #ffffff;
+}
+
+.modulr-file-input__selected-title {
+	margin: 0;
+	font-size: calc(var(--file-input-base-help-size) * var(--file-input-scale));
+	font-weight: 600;
+	color: #334155;
+}
+
+.modulr-file-input__selected-list {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	display: grid;
+	gap: 0.35rem;
+}
+
+.modulr-file-input__selected-item {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) auto auto;
+	align-items: center;
+	gap: calc(0.45rem * var(--file-input-scale));
+	padding: calc(0.35rem * var(--file-input-scale)) calc(0.45rem * var(--file-input-scale));
+	border-radius: calc(6px * var(--file-input-scale));
+	background: #f8fafc;
+	border: 1px solid #e2e8f0;
+}
+
+.modulr-file-input__selected-name {
+	font-size: calc(var(--file-input-base-help-size) * var(--file-input-scale));
+	color: #0f172a;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.modulr-file-input__selected-meta {
+	font-size: calc(11px * var(--file-input-scale));
+	color: #64748b;
+	white-space: nowrap;
+}
+
+.modulr-file-input__selected-remove {
+	appearance: none;
+	border: 1px solid #f1b6c3;
+	background: #fff1f4;
+	color: #881337;
+	border-radius: 999px;
+	padding: calc(2px * var(--file-input-scale)) calc(10px * var(--file-input-scale));
+	font-size: calc(11px * var(--file-input-scale));
+	cursor: pointer;
+}
+
+.modulr-file-input__selected-remove:hover {
+	background: #ffe4ea;
+}
+
+.modulr-file-input__selected-empty {
+	font-size: calc(var(--file-input-base-help-size) * var(--file-input-scale));
+	color: #64748b;
+	padding: calc(0.2rem * var(--file-input-scale)) 0;
+}

@@ -1,0 +1,54 @@
+.modulr-select {
+	--select-scale: 1;
+	--select-base-padding-y: 0.65rem;
+	--select-base-padding-x: 0.85rem;
+	--select-base-font-size: 1rem;
+	--select-base-radius: 0.5rem;
+
+	display: block;
+	width: 100%;
+	padding: calc(var(--select-base-padding-y) * var(--select-scale)) calc(var(--select-base-padding-x) * var(--select-scale));
+	border: 1px solid #cbd5e1;
+	border-radius: var(--select-base-radius);
+	font: inherit;
+	font-size: calc(var(--select-base-font-size) * var(--select-scale));
+	background: #ffffff;
+	color: #0f172a;
+	box-sizing: border-box;
+}
+
+.modulr-select--sm {
+	--select-scale: 0.85;
+}
+
+.modulr-select--md {
+	--select-scale: 1;
+}
+
+.modulr-select--lg {
+	--select-scale: 1.15;
+}
+
+.modulr-select:focus {
+	outline: none;
+	border-color: #0366d6;
+	box-shadow: 0 0 0 calc(3px * var(--select-scale)) rgba(3, 102, 214, 0.2);
+}
+
+.modulr-select--invalid {
+	border-color: #dc2626;
+}
+
+.modulr-select__help,
+.modulr-select__error {
+	margin: calc(0.35rem * var(--select-scale)) 0 0;
+	font-size: calc(0.8125rem * var(--select-scale));
+}
+
+.modulr-select__help {
+	color: #64748b;
+}
+
+.modulr-select__error {
+	color: #dc2626;
+}

@@ -1,0 +1,45 @@
+.modulr-checkbox {
+	--checkbox-scale: 1;
+	--checkbox-base-gap: 0.5rem;
+	--checkbox-base-font-size: 1rem;
+	--checkbox-base-control-size: 1rem;
+
+	display: inline-flex;
+	align-items: center;
+	gap: calc(var(--checkbox-base-gap) * var(--checkbox-scale));
+	font: inherit;
+	font-size: calc(var(--checkbox-base-font-size) * var(--checkbox-scale));
+	color: #0f172a;
+	cursor: pointer;
+}
+
+.modulr-checkbox--sm {
+	--checkbox-scale: 0.85;
+}
+
+.modulr-checkbox--md {
+	--checkbox-scale: 1;
+}
+
+.modulr-checkbox--lg {
+	--checkbox-scale: 1.15;
+}
+
+.modulr-checkbox__input {
+	width: calc(var(--checkbox-base-control-size) * var(--checkbox-scale));
+	height: calc(var(--checkbox-base-control-size) * var(--checkbox-scale));
+}
+
+.modulr-checkbox__label {
+	font-weight: 500;
+}
+
+.modulr-checkbox__help {
+	margin: calc(0.35rem * var(--checkbox-scale)) 0 0 calc(1.5rem * var(--checkbox-scale));
+	font-size: calc(0.8125rem * var(--checkbox-scale));
+	color: #64748b;
+}
+
+.modulr-checkbox--invalid .modulr-checkbox__label {
+	color: #dc2626;
+}
