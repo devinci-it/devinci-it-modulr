@@ -1,0 +1,156 @@
+.modulr-tree-view {
+	--tree-view-bg: #ffffff;
+	--tree-view-border: #e5e7eb;
+	--tree-view-text: #0f172a;
+	--tree-view-muted: #64748b;
+	--tree-view-hover: #f8fafc;
+	--tree-view-active-bg: #eef2ff;
+	--tree-view-active-text: #1d4ed8;
+	--tree-view-indent: 18px;
+
+	color: var(--tree-view-text);
+	background: var(--tree-view-bg);
+	width: 100%;
+}
+
+.modulr-tree-view__root,
+.modulr-tree-view__children {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: grid;
+	gap: 4px;
+}
+
+.modulr-tree-view__children {
+	margin-left: var(--tree-view-indent);
+	padding-left: 12px;
+	border-left: 1px solid var(--tree-view-border);
+	margin-top: 4px;
+	overflow: hidden;
+	height: auto;
+	transition: height 0.2s ease;
+}
+
+.modulr-tree-view__item {
+	display: grid;
+	gap: 4px;
+}
+
+.modulr-tree-view__row {
+	display: grid;
+	grid-template-columns: 22px minmax(0, 1fr);
+	align-items: center;
+	gap: 6px;
+}
+
+.modulr-tree-view__toggle,
+.modulr-tree-view__content {
+	appearance: none;
+	border: 0;
+	background: transparent;
+	color: inherit;
+	font: inherit;
+	text-align: left;
+	width: 100%;
+	min-width: 0;
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	padding: 10px 10px 10px 8px;
+	border-radius: 10px;
+	text-decoration: none;
+	cursor: pointer;
+	transition: background 0.14s ease, color 0.14s ease, transform 0.14s ease;
+}
+
+.modulr-tree-view__toggle:hover,
+.modulr-tree-view__toggle:focus-visible,
+.modulr-tree-view__content:hover,
+.modulr-tree-view__content:focus-visible {
+	background: var(--tree-view-hover);
+	outline: none;
+}
+
+.modulr-tree-view__item.is-active > .modulr-tree-view__row > .modulr-tree-view__content {
+	background: var(--tree-view-active-bg);
+	color: var(--tree-view-active-text);
+	font-weight: 700;
+}
+
+.modulr-tree-view__toggle {
+	justify-content: center;
+	padding: 0;
+	width: 22px;
+	height: 22px;
+	border-radius: 999px;
+	color: var(--tree-view-muted);
+}
+
+.modulr-tree-view__item.is-expanded > .modulr-tree-view__row > .modulr-tree-view__toggle .modulr-tree-view__chevron {
+	transform: rotate(90deg);
+}
+
+.modulr-tree-view__item:not(.is-open) > .modulr-tree-view__children {
+	height: 0;
+}
+
+.modulr-tree-view__item.is-open > .modulr-tree-view__children {
+	height: auto;
+}
+
+.modulr-tree-view__chevron {
+	display: inline-block;
+	width: 14px;
+	height: 14px;
+	flex: 0 0 auto;
+	transition: transform 0.16s ease, opacity 0.16s ease;
+	opacity: 0.88;
+	transform-origin: center;
+}
+
+.modulr-tree-view__item.is-open > .modulr-tree-view__row > .modulr-tree-view__toggle .modulr-tree-view__chevron {
+	transform: rotate(90deg);
+	opacity: 1;
+}
+
+.modulr-tree-view__spacer {
+	display: inline-block;
+	width: 22px;
+	height: 22px;
+}
+
+.modulr-tree-view__content--button {
+	justify-content: flex-start;
+}
+
+.modulr-tree-view__icon {
+	flex: 0 0 auto;
+	width: 18px;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.modulr-tree-view__label {
+	min-width: 0;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.modulr-tree-view__badge {
+	margin-left: auto;
+	font-size: 11px;
+	line-height: 1;
+	padding: 4px 7px;
+	border-radius: 999px;
+	background: #e2e8f0;
+	color: #334155;
+}
+
+.modulr-tree-view--dense .modulr-tree-view__toggle,
+.modulr-tree-view--dense .modulr-tree-view__content {
+	padding-top: 8px;
+	padding-bottom: 8px;
+}
