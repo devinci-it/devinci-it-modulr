@@ -1,0 +1,71 @@
+.modulr-action-menu {
+	--action-menu-scale: 1;
+	--action-menu-gap: calc(12px * var(--action-menu-scale));
+	--action-menu-padding-y: calc(10px * var(--action-menu-scale));
+	--action-menu-padding-x: calc(14px * var(--action-menu-scale));
+	--action-menu-font-size: calc(14px * var(--action-menu-scale));
+	--action-menu-icon-size: calc(18px * var(--action-menu-scale));
+	--action-menu-radius: calc(10px * var(--action-menu-scale));
+	--action-menu-icon-gap: calc(8px * var(--action-menu-scale));
+
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--action-menu-gap);
+	align-items: center;
+}
+
+.modulr-action-menu--sm {
+	--action-menu-scale: 0.85;
+}
+
+.modulr-action-menu--md {
+	--action-menu-scale: 1;
+}
+
+.modulr-action-menu--lg {
+	--action-menu-scale: 1.2;
+}
+
+.modulr-action-menu__link {
+	display: inline-flex;
+	align-items: center;
+	gap: var(--action-menu-icon-gap);
+	padding: var(--action-menu-padding-y) var(--action-menu-padding-x);
+	border-radius: var(--action-menu-radius);
+	border: 1px solid #d1d5db;
+	background: #ffffff;
+	color: #111827;
+	text-decoration: none;
+	font-weight: 600;
+	font-size: var(--action-menu-font-size);
+	line-height: 1.1;
+	transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+}
+
+.modulr-action-menu__link:hover,
+.modulr-action-menu__link:focus-visible {
+	transform: translateY(-1px);
+	border-color: #9ca3af;
+	box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
+	background: #f9fafb;
+}
+
+.modulr-action-menu__icon {
+	width: var(--action-menu-icon-size);
+	height: var(--action-menu-icon-size);
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	flex: 0 0 auto;
+}
+
+.modulr-action-menu__icon img {
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+	display: block;
+}
+
+.modulr-action-menu__label {
+	white-space: nowrap;
+}
